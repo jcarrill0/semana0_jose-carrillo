@@ -1,8 +1,9 @@
 # Importar las librerías necesarias
 from  fastapi import  FastAPI
 from  pydantic import  BaseModel
-import  os
 from  dotenv import  load_dotenv
+import  os
+import ollama
 
 # Cargar variables de entorno desde el archivo .env
 load_dotenv()
@@ -17,5 +18,6 @@ class  Pregunta(BaseModel):
 @app.post("/preguntar")
 async  def  preguntar(pregunta: Pregunta):
     # Aquí llamarías al modelo de IA para obtener una respuesta 
-    respuesta = "Esta es una respuesta simulada para: " + pregunta.texto 
-    return  {"respuesta": respuesta}
+    respuesta = ollama.chat(model="deepseek-r1", messages=[{"role": "user", "content":pregunta.texto}])
+    #respuesta = "Esta es una respuesta simulada para: " + pregunta.texto 
+    return {"respuesta": respuesta["message"]["content"]} #{"respuesta": respuesta}
