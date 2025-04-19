@@ -185,3 +185,12 @@ Para balancear la carga entre múltiples instancias de Ollama, se pueden impleme
 - **Colas de trabajo :** Utilizar sistemas de colas como Celery, RabbitMQ o Kafka para enviar solicitudes a diferentes instancias según su disponibilidad.
 - **Health checks :** Configurar verificaciones de salud para detectar instancias no disponibles y redirigir el tráfico solo a las instancias activas.
 - **Sharding :** Dividir las solicitudes según criterios específicos (por ejemplo, por tipo de tarea o usuario) para asignarlas a instancias específicas.
+
+## 8. ¿Qué patrones de diseño (ej: CQRS, Singleton) son útiles para integrar modelos de IA en backend?
+Algunos patrones de diseño útiles para integrar modelos de IA en backend incluyen:
+- CQRS (Command Query Responsibility Segregation) : Separa las operaciones de lectura y escritura, permitiendo optimizar el procesamiento de consultas y comandos. Esto es útil cuando las consultas a modelos de IA son intensivas en recursos.
+- **Singleton :** Asegura que solo exista una instancia del modelo de IA en memoria, reduciendo el consumo de recursos y mejorando la eficiencia.
+- **Facade :** Proporciona una interfaz simplificada para interactuar con el modelo de IA, ocultando la complejidad de su implementación.
+- **Observer :** Permite que múltiples componentes del sistema reaccionen a eventos generados por el modelo de IA, como la finalización de una tarea.
+- **Pipeline :** Divide el procesamiento en etapas secuenciales, lo que facilita la gestión de flujos de trabajo complejos, como la preprocesamiento de datos, inferencia y postprocesamiento.
+- **Adapter :** Convierte la interfaz del modelo de IA en una interfaz compatible con el resto del sistema, facilitando su integración.
